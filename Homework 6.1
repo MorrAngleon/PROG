@@ -1,0 +1,20 @@
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] array = {2, 87, 88, 45, 98, 62, 12, 1, 14, 78};
+
+        System.out.println(Arrays.toString(mirror(array)));
+    }
+
+    private static int[] mirror(int[] i){
+        int[] y = new int[i.length];
+        int size = i.length;
+
+        for (int x : i){
+            size--;
+            y[size] = x;
+        }
+        return y;
+    }
+}
