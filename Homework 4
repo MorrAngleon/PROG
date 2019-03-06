@@ -1,0 +1,23 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] array = new int[10];
+
+        for (int x = 0; x < array.length; x++){
+            array[x] = sc.nextInt();
+        }
+
+        int[] first = {array[0], array[1], array[2], array[3], array[4]};
+        int[] second = {array[5], array[6], array[7], array[8], array[9]};
+
+        Arrays.sort(first);
+        Arrays.sort(second);
+
+        System.out.println(Arrays.toString(first));
+        System.out.println(Arrays.toString(second));
+
+    }
+}
