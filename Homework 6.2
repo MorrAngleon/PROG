@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Укажите длину массива");
+
+        int[] array = new int[sc.nextInt()];
+
+        int x = 0;
+        while (x < array.length){
+            System.out.println("Введите элемент массива №" + x);
+
+            array[x] = sc.nextInt();
+            x++;
+        }
+
+        try {
+            while (true) {
+                System.out.println("Укажите индекс массива, чтобы вывести его значение в консоль.");
+                System.out.println("Значение индекса: " + array[sc.nextInt()]);
+            }
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("Введен некорректный индекс");
+        }
+    }
+}
