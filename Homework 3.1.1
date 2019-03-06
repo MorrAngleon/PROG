@@ -1,0 +1,13 @@
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] array = {2, 15, 42, 37, 8, 5};
+
+        int change = array[0];
+        array[0] = array[array.length - 1];
+        array[array.length - 1] = change;
+
+        System.out.println(Arrays.toString(array));
+    }
+}
