@@ -1,0 +1,12 @@
+public class Main {
+    public static void main(String[] args) {
+        int[] array = {2, 87, 88, 45, 98, 62, 12, 1, 14, 78};
+
+        int sum = 0;
+        for (int x = 0; x < array.length; x++){
+            sum += array[x];
+        }
+
+        System.out.println(sum/array.length);
+    }
+}
