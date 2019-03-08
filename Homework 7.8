@@ -1,0 +1,24 @@
+public class Main {
+    public static void main(String[] args) {
+        int[] array = {2, 87, 88, 45, 98, 62, 12, 1, 14, 78, 13, 45, 12, 0, 99, 45};
+
+        int count = 0;
+        int temp1;
+        int temp2 = 0;
+
+        for (int i = 0; i < array.length; i++){
+            temp1 = 0; //обьявляем переменную в области видимости цикла для итерации
+            for (int j = 0; j < array.length; j++){
+                if (array[j] == array[i])
+                    temp1++;
+            }
+
+            if (temp1 > temp2){
+                temp2 = temp1; //задаем значение переменной вне цикла
+                count = array[i]; //задаем переменной значение наиболее повторяемого элемента
+            }
+        }
+
+        System.out.printf("Элемент массива с наибольшим количеством повторений (%d раз) : %d", temp2, count);
+    }
+}
