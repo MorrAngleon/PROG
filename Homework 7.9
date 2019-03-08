@@ -1,0 +1,21 @@
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] array = new int[11];
+
+        arrayFill(array);
+        System.out.println(Arrays.toString(array));
+    }
+
+    static void arrayFill(int[] arr){
+        //условие, если размер массива делится без остатка, ставим в центр массива цифру 1, иначе - 0
+        int x = (arr.length%2 == 0)? 1: 0;
+
+        //в цикле определяем точку, от которой будет выполняться заполнение массива (int i = arr.length/2)
+        for (int i = arr.length / 2; i < arr.length; i++){
+            arr[i] = x; //код на наполнения массива вправо от центра массива. Заменяем заданное условие на итерации
+            arr[arr.length - i - 1] = x++; //код для наполнения массива влево от центра массива
+        }
+    }
+}
