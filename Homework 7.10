@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double result; //переменная для хранения результата
+
+        System.out.println("Введите выражение для расчета");
+        String line = sc.nextLine();
+
+        /*
+          метод split() возвращает массив строк, вычисленных путем
+          разделения строки вокруг регулярного выражения (regex).
+          В качестве аргумента выступают знаки математических операций
+        */
+        String[] signs = line.split("[+-/*]");
+        /*
+          обьявляем массив с введенными числами
+          равный длине массива signs
+         */
+        double[] numbers = new double[signs.length];
+
+        /*
+          цикл for присваивает каждому элементу массива numbers
+          преобразованное в значение Double
+          (методом valueOf() с элементом массива signs в качестве аргумента)
+         */
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = Double.valueOf(signs[i]);
+        }
+
+        /*
+          В качестве аргумента метода split() (который возвращает массив строк)
+          передаем цифры (\d), знак "+" означает одно или несколько вхождений предыдущего символа (цифры \d)
+         */
+        String[] operator = line.split("\\d+");
+
+        result = numbers[0];
+
+        /*
+          В цикле for делаем ветвление для каждого возможного математического знака.
+          Присваиваем результат (без приоритета операций) в переменную result.
+         */
+        for (int i = 1; i < operator.length; i++) {
+            if (operator[i].compareTo("+") == 0) {
+                result = result + numbers[i];
+            }
+            if (operator[i].compareTo("-") == 0) {
+                result = result - numbers[i];
+            }
+            if (operator[i].compareTo("/") == 0) {
+                result = result / numbers[i];
+            }
+            if (operator[i].compareTo("*") == 0) {
+                result = result * numbers[i];
+            }
+        }
+        System.out.println(result);
+        sc.close();
+    }
+}
