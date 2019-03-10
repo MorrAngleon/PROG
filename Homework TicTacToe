@@ -10,49 +10,22 @@ public class Main {
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ticTac {
-    String[][] field = new String[3][3];
+class ticTac {
+    private String[][] field = new String[3][3];
     private int count = 0;
 
     void startGame() {
         prepare(field);
-        drawField();
-        checkPlayerOne(playerOneChoice());
-        gameStatus();
-        drawField();
-        count++;
-        checkPlayerTwo(playerTwoChoice());
-        gameStatus();
-        drawField();
-        count++;
-        checkPlayerOne(playerOneChoice());
-        gameStatus();
-        drawField();
-        count++;
-        checkPlayerTwo(playerTwoChoice());
-        gameStatus();
-        drawField();
-        count++;
-        checkPlayerOne(playerOneChoice());
-        gameStatus();
-        drawField();
-        count++;
-        checkPlayerTwo(playerTwoChoice());
-        gameStatus();
-        drawField();
-        count++;
-        checkPlayerOne(playerOneChoice());
-        gameStatus();
-        drawField();
-        count++;
-        checkPlayerTwo(playerTwoChoice());
-        gameStatus();
-        drawField();
-        count++;
-        checkPlayerOne(playerOneChoice());
-        count++;
-        gameStatus();
-        drawField();
+        while (count < 9) {
+            drawField();
+            checkPlayerOne(playerOneChoice());
+            ++count;
+            gameStatus();
+            drawField();
+            checkPlayerTwo(playerTwoChoice());
+            ++count;
+            gameStatus();
+        }
     }
 
     private void drawField() {
@@ -62,19 +35,19 @@ public class ticTac {
     }
 
     private void prepare(String[][] st) {
-        st[0][0] = "1";
-        st[0][1] = "2";
-        st[0][2] = "3";
+        st[0][0] = "7";
+        st[0][1] = "8";
+        st[0][2] = "9";
         st[1][0] = "4";
         st[1][1] = "5";
         st[1][2] = "6";
-        st[2][0] = "7";
-        st[2][1] = "8";
-        st[2][2] = "9";
+        st[2][0] = "1";
+        st[2][1] = "2";
+        st[2][2] = "3";
     }
 
     private String playerOneChoice() {
-        String s = " ";
+        String s;
         while (true) {
             try {
                 System.out.println("Игрок 1 сделайте свой выбор:");
@@ -86,7 +59,7 @@ public class ticTac {
                     s = Integer.toString(i);
                     break;
                 } else if (!checkCellStatus(i)) {
-                    System.out.println("Попробуй выбрать снова.");
+                    System.out.println("Ячейка занята. Попробуй выбрать снова.");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Введены некорректные данные");
@@ -96,7 +69,7 @@ public class ticTac {
     }
 
     private String playerTwoChoice() {
-        String s = " ";
+        String s;
         while (true) {
             try {
                 System.out.println("Игрок 2 сделайте свой выбор:");
@@ -120,13 +93,13 @@ public class ticTac {
     private void checkPlayerOne(String s) {
         switch (s) {
             case "1":
-                field[0][0] = "X";
+                field[2][0] = "X";
                 break;
             case "2":
-                field[0][1] = "X";
+                field[2][1] = "X";
                 break;
             case "3":
-                field[0][2] = "X";
+                field[2][2] = "X";
                 break;
             case "4":
                 field[1][0] = "X";
@@ -138,13 +111,13 @@ public class ticTac {
                 field[1][2] = "X";
                 break;
             case "7":
-                field[2][0] = "X";
+                field[0][0] = "X";
                 break;
             case "8":
-                field[2][1] = "X";
+                field[0][1] = "X";
                 break;
             case "9":
-                field[2][2] = "X";
+                field[0][2] = "X";
                 break;
         }
     }
@@ -152,13 +125,13 @@ public class ticTac {
     private void checkPlayerTwo(String s) {
         switch (s) {
             case "1":
-                field[0][0] = "O";
+                field[2][0] = "O";
                 break;
             case "2":
-                field[0][1] = "O";
+                field[2][1] = "O";
                 break;
             case "3":
-                field[0][2] = "O";
+                field[2][2] = "O";
                 break;
             case "4":
                 field[1][0] = "O";
@@ -170,89 +143,91 @@ public class ticTac {
                 field[1][2] = "O";
                 break;
             case "7":
-                field[2][0] = "O";
+                field[0][0] = "O";
                 break;
             case "8":
-                field[2][1] = "O";
+                field[0][1] = "O";
                 break;
             case "9":
-                field[2][2] = "O";
+                field[0][2] = "O";
                 break;
         }
     }
 
     private void gameStatus() {
-        if ((field[0][0] == "X" && field[0][1] == "X" && field[0][2] == "X") ||
-                (field[1][0] == "X" && field[1][1] == "X" && field[1][2] == "X") ||
-                (field[2][0] == "X" && field[2][1] == "X" && field[2][2] == "X") ||
-                (field[0][0] == "X" && field[1][0] == "X" && field[2][0] == "X") ||
-                (field[0][1] == "X" && field[1][1] == "X" && field[2][1] == "X") ||
-                (field[0][2] == "X" && field[1][2] == "X" && field[2][2] == "X") ||
-                (field[0][0] == "X" && field[1][1] == "X" && field[2][2] == "X") ||
-                (field[2][0] == "X" && field[1][1] == "X" && field[0][2] == "X")) {
+        if ((field[0][0].equals("X") && field[0][1].equals("X") && field[0][2].equals("X")) ||
+                (field[1][0].equals("X") && field[1][1].equals("X") && field[1][2].equals("X")) ||
+                (field[2][0].equals("X") && field[2][1].equals("X") && field[2][2].equals("X")) ||
+                (field[0][0].equals("X") && field[1][0].equals("X") && field[2][0].equals("X")) ||
+                (field[0][1].equals("X") && field[1][1].equals("X") && field[2][1].equals("X")) ||
+                (field[0][2].equals("X") && field[1][2].equals("X") && field[2][2].equals("X")) ||
+                (field[0][0].equals("X") && field[1][1].equals("X") && field[2][2].equals("X")) ||
+                (field[2][0].equals("X") && field[1][1].equals("X") && field[0][2].equals("X"))) {
             drawField();
             System.out.println("Игрок 1 победил!");
             System.exit(0);
-        } else if ((field[0][0] == "O" && field[0][1] == "O" && field[0][2] == "O") ||
-                (field[1][0] == "O" && field[1][1] == "O" && field[1][2] == "O") ||
-                (field[2][0] == "O" && field[2][1] == "O" && field[2][2] == "O") ||
-                (field[0][0] == "O" && field[1][0] == "O" && field[2][0] == "O") ||
-                (field[0][1] == "O" && field[1][1] == "O" && field[2][1] == "O") ||
-                (field[0][2] == "O" && field[1][2] == "O" && field[2][2] == "O") ||
-                (field[0][0] == "O" && field[1][1] == "O" && field[2][2] == "O") ||
-                (field[2][0] == "O" && field[1][1] == "O" && field[0][2] == "O")) {
+        } else if ((field[0][0].equals("O") && field[0][1].equals("O") && field[0][2].equals("O")) ||
+                (field[1][0].equals("O") && field[1][1].equals("O") && field[1][2].equals("O")) ||
+                (field[2][0].equals("O") && field[2][1].equals("O") && field[2][2].equals("O")) ||
+                (field[0][0].equals("O") && field[1][0].equals("O") && field[2][0].equals("O")) ||
+                (field[0][1].equals("O") && field[1][1].equals("O") && field[2][1].equals("O")) ||
+                (field[0][2].equals("O") && field[1][2].equals("O") && field[2][2].equals("O")) ||
+                (field[0][0].equals("O") && field[1][1].equals("O") && field[2][2].equals("O")) ||
+                (field[2][0].equals("O") && field[1][1].equals("O") && field[0][2].equals("O"))) {
             drawField();
             System.out.println("Игрок 2 победил!");
             System.exit(0);
         } else if (count == 9) {
             System.out.println("Ничья!");
+            drawField();
+            System.exit(0);
         }
     }
 
     private boolean checkCellStatus(int cell) {
         switch (cell) {
             case 1:
-                if (field[0][0] != "1") {
+                if (!(field[2][0].equals("1"))) {
                     return false;
                 }
                 break;
             case 2:
-                if (field[0][1] != "2") {
+                if (!(field[2][1].equals("2"))) {
                     return false;
                 }
                 break;
             case 3:
-                if (field[0][2] != "3") {
+                if (!(field[2][2].equals("3"))) {
                     return false;
                 }
                 break;
             case 4:
-                if (field[1][0] != "4") {
+                if (!(field[1][0].equals("4"))) {
                     return false;
                 }
                 break;
             case 5:
-                if (field[1][1] != "5") {
+                if (!(field[1][1].equals("5"))) {
                     return false;
                 }
                 break;
             case 6:
-                if (field[1][2] != "6") {
+                if (!(field[1][2].equals("6"))) {
                     return false;
                 }
                 break;
             case 7:
-                if (field[2][0] != "7") {
+                if (!(field[0][0].equals("7"))) {
                     return false;
                 }
                 break;
             case 8:
-                if (field[2][1] != "8") {
+                if (!(field[0][1].equals("8"))) {
                     return false;
                 }
                 break;
             case 9:
-                if (field[2][2] != "9") {
+                if (!(field[0][2].equals("9"))) {
                     return false;
                 }
                 break;
