@@ -1,0 +1,26 @@
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] a = {1, 2, 3};
+        int[] b = {4, 5, 6};
+        System.out.println(Arrays.toString(taskFour(a, b)));
+
+        String[] s1 = {"Mercury", "Venus", "Earth"};
+        String[] s2 = {"Mars", "Jupiter", "Saturn"};
+        System.out.println(Arrays.toString(taskFour(s1, s2)));
+    }
+
+    static int[] taskFour(int[] x, int[]y){
+        int[] z = new int[x.length + y.length];
+        System.arraycopy(x, 0, z, 0, x.length);
+        System.arraycopy(y, 0, z, x.length, y.length);
+        return z;
+    }
+    static String[] taskFour(String [] x, String[]y){
+        String[] z = new String[x.length + y.length];
+        System.arraycopy(x, 0, z, 0, x.length);
+        System.arraycopy(y, 0, z, x.length, y.length);
+        return z;
+    }
+}
