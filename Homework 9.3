@@ -1,0 +1,32 @@
+public class Main {
+    public static void main(String[] args) {
+        int[] one = {1, 2, 3, 4, 5, 6};
+        System.out.println(intToString(one));
+        System.out.println(intToStringNew(one));
+    }
+
+    static String intToString(int[] a) {
+        String s = "[ ";
+        for (int x = 0; x < a.length; x++){
+            if (x < a.length-1)
+                s += a[x] + ", ";
+            else
+                s += a[x];
+        }
+        s += " ]";
+        return s;
+    }
+
+    //более выгодный вариант по использованию памяти
+    static String intToStringNew(int[] a) {
+        StringBuilder s = new StringBuilder("[ ");
+        for (int x = 0; x < a.length; x++) {
+            if (x < a.length - 1)
+                s.append(a[x]).append(", ");
+            else
+                s.append(a[x]);
+        }
+        s.append(" ]");
+        return s.toString();
+    }
+}
