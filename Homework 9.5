@@ -1,0 +1,11 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите число в двоичной форме счисления:");
+        String binary = sc.nextLine();
+        int result = Integer.parseInt(binary,2);
+        System.out.println(result);
+    }
+}
