@@ -1,0 +1,29 @@
+public class Main {
+    public static void main(String[] args) {
+    
+        //массивы полностью идентичны
+        short[] one = {1, 2, 3, 4, 5, 6};
+        short[] two = {1, 2, 3, 4, 5, 6};
+        System.out.println(equalsShort(one, two));
+
+        //массивы отличаются длиной
+        short[] three = {1, 2, 3, 4, 5, 6};
+        short[] four = {1, 2, 3, 4};
+        System.out.println(equalsShort(three, four));
+
+        //значения массивов идентичны, порядок случайный
+        short[] five = {1, 2, 3, 4, 5};
+        short[] six = {5, 4, 3, 2, 1};
+        System.out.println(equalsShort(five, six));
+    }
+
+    static boolean equalsShort(short[] a, short[] b) {
+        if (a.length != b.length)
+            return false;
+
+        for (int x = 0; x < a.length; x++)
+            if (a[x]!=b[x])
+                return false;
+        return true;
+    }
+}
