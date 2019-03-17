@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите число для перевода в двоичную систему:");
+        int number = sc.nextInt();
+        String binary = Integer.toBinaryString(number);
+        char[] toDisplay = binary.toCharArray();
+        int count = 0;
+        for (int x = 0; x < toDisplay.length; x++){
+            if (toDisplay[x] == '1')
+                count++;
+        }
+        System.out.printf("Число %d в двичной системе равно %s, количество единиц равно %d", number, binary, count);
+    }
+}
