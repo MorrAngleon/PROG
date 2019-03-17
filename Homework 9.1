@@ -1,0 +1,29 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        System.out.println("Введите дату в формате dd/HH/yyy HH:mm:ss");
+        String scDate = sc.nextLine();
+
+        try {
+            Date date = sdf.parse(scDate);
+            Calendar calendar = Calendar.getInstance();
+
+            long result = calendar.getTimeInMillis() - date.getTime();
+
+            long seconds = result / 1000;
+            long minutes = seconds / 60;
+            long hours = minutes / 60;
+            long days = hours / 24;
+            System.out.println("С указанной даты до сегодняшнего дня прошло " + days + " дней " + hours%24 + " часов " + minutes%60 + " минут и " + seconds%60 + " секунд");
+        } catch (ParseException e){
+            System.out.println("Введены некорректные данные");
+        }
+    }
+}
