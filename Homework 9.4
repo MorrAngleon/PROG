@@ -1,0 +1,43 @@
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] a = {1, 2, 3, 4, 5};
+
+        setBit(a,0);
+        setBit(a,3);
+        setBit(a,5);
+        setBit(a,15);
+
+        System.out.println(isBitSet(a,0));
+        System.out.println(isBitSet(a,3));
+        System.out.println(isBitSet(a,5));
+        System.out.println(isBitSet(a,15));
+        System.out.println(isBitSet(a,99)); //для проверки
+        System.out.println(Arrays.toString(a));
+    }
+
+    //метод установки бита в числе
+    static int setBit(int x, int pos){
+        return x | (1 << pos);
+    }
+
+    //метод проверки бита в числе
+    static boolean isBitSet(int x, int pos){
+        return (x & (1 << pos)) != 0;
+    }
+
+    //метод установки бита в массиве
+    static void setBit(int[] a, int pos){
+        int int1 = a.length - (pos/32) - 1;
+        int bit1 = pos % 32;
+        a[int1] = setBit(a[int1], bit1);
+    }
+
+    //метод проверки бита в массиве
+    static boolean isBitSet(int[] a, int pos){
+        int int1 = a.length - (pos/32) - 1;
+        int bit1 = pos % 32;
+        return isBitSet(a[int1], bit1);
+    }
+}
