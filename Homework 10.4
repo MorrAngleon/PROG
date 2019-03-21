@@ -1,0 +1,30 @@
+public class Main {
+    public static void main(String[] args) {
+        String text = "Я длинное предложение Я        второе предложение.";
+
+        //помещаем в массив строки, разделенные пробелами
+        String[] array = text.split(" ");
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int x = 0; x < array.length; x++) {
+            if (array[x].length() > 0) { //если длина массива больше 0, добавляем в StringBuilder элемент массива с индексом "х".
+                sb.append(array[x]);
+                /*дополнительные условия:
+                - если х+1 меньше длины массива... (Последний элемент будет равен длине)
+                - если длина элемента х+1 массива больше нуля (то есть исключение пробелов из исходного текста)
+                - если символ следующего элемента массива (начиная с положения ноль, то есть с его начала) начинается с верхнего регистра
+                - если элемент массива не заканчивается на символ точки, то ставим точку. Иначе - пробел.
+                 */
+                if ((x+1 < array.length) &&
+                        (array[x+1].length() > 0) &&
+                        Character.isUpperCase(array[x+1].charAt(0)) &&
+                        !(array[x].endsWith("."))) {
+                    sb.append(". ");
+                } else
+                    sb.append(" ");
+            }
+        }
+        System.out.println(sb.toString());
+    }
+}
