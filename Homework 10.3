@@ -1,0 +1,16 @@
+public class Main {
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 4, 5};
+        int[] arr2 = {10, 20, 30, 40, 50};
+        int[] arr3 = {15, 25, 35, 45, 55};
+
+        int[][]all = {arr1, arr2, arr3};
+        int sum = 0;
+
+        for (int x = 0; x < all.length; x++){
+            for (int y = 0; y < all[x].length; y++)
+                sum+=all[x][y];
+        }
+        System.out.println(sum);
+    }
+}
